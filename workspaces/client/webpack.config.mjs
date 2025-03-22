@@ -6,6 +6,9 @@ import webpack from 'webpack';
 const config = {
   entry: './src/main.tsx',
   mode: 'production',
+  optimization: {
+    usedExports: true,
+  },
   module: {
     rules: [
       {
