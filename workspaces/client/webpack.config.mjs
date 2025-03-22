@@ -23,6 +23,7 @@ const config = {
               [
                 '@babel/preset-env',
                 {
+                  targets: 'last 1 Chrome version',
                   useBuiltIns: 'entry',
                 },
               ],
