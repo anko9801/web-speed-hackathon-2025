@@ -1,5 +1,6 @@
 import path from 'node:path';
 
+import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
@@ -47,6 +48,28 @@ const config = {
         },
       },
     ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+            unused: true,
+          },
+          format: {
+            comments: false,
+          },
+          keep_classnames: false,
+          keep_fnames: false,
+        },
+      }),
+    ],
+    sideEffects: true,
+    usedExports: true,
   },
   output: {
     chunkFilename: 'chunk-[contenthash].js',
