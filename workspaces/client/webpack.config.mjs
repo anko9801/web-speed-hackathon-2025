@@ -5,7 +5,7 @@ import webpack from 'webpack';
 /** @type {import('webpack').Configuration} */
 const config = {
   entry: './src/main.tsx',
-  mode: 'none',
+  mode: 'production',
   module: {
     rules: [
       {
