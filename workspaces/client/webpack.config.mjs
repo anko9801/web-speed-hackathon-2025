@@ -7,9 +7,6 @@ import analyzer from 'webpack-bundle-analyzer';
 const config = {
   entry: './src/main.tsx',
   mode: 'production',
-  optimization: {
-    usedExports: true,
-  },
   module: {
     rules: [
       {
@@ -54,6 +51,9 @@ const config = {
       },
     ],
   },
+  optimization: {
+    usedExports: true,
+  },
   output: {
     chunkFilename: 'chunk-[contenthash].js',
     chunkFormat: false,
@@ -63,7 +63,7 @@ const config = {
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
-    new webpack.EnvironmentPlugin({ API_BASE_URL: '/api', NODE_ENV: '' }),
+    new webpack.EnvironmentPlugin({ API_BASE_URL: '/api', NODE_ENV: 'production' }),
     new analyzer.BundleAnalyzerPlugin(),
   ],
   resolve: {
